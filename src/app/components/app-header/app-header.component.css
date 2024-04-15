@@ -1,0 +1,22 @@
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.logo-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+}
+
+#logo {
+  margin-right: 10px;
+}
+
+.mat-toolbar {
+  background-color: transparent;
+  margin-bottom: 10px;
+}
