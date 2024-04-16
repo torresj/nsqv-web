@@ -1,16 +1,18 @@
 <section class="home-section">
   <section class="banner-section">
-    <span class="banner-questions">¿No sabes que ver?</span>
+    <span class="banner-questions">¿No sabes qué ver?</span>
     <span class="banner-text"
-      >En <strong>nosequever.es</strong> te lo ponemos facil, no importa si son
-      canales de pago o gratuitos, anlizamos mas de 20 canales en castellano y
-      ponemos toda la informacion a tu alcance de una forma rapida y sencilla.
-      Elige entre peliculas, series o eventos deportivos y decide que quieres
+      >En <strong>nosequever.es</strong> te lo ponemos fácil, no importa si son
+      canales de pago o gratuitos, anlizamos más de 20 canales en castellano y
+      ponemos toda la información a tu alcance de una forma rápida y sencilla.
+      Elige entre películas, series o eventos deportivos y decide qué quieres
       ver.
     </span>
   </section>
   <section class="card-section">
-    <article class="card movies-card" matRipple>Películas</article>
+    <article class="card movies-card" matRipple [routerLink]="'/movies'">
+      Películas
+    </article>
     <article class="card series-card" matRipple>Series</article>
     <article class="card sports-card" matRipple>Deportes</article>
   </section>

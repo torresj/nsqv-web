@@ -1,16 +1,20 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-    <span class="fill-remaining-space">
-      <section class="logo-section">
-        <img
-          id="logo"
-          src="assets/images/logo.png"
-          alt="logo"
-          height="30"
-          width="30"
-        />
-        Nosequever.es
-      </section>
-    </span>
-  </mat-toolbar-row>
+<mat-toolbar class="toolbar">
+  <button
+    mat-icon-button
+    *ngIf="!(this.isHome$ | async)"
+    class="back-button"
+    (click)="goToPreviousPage()"
+  >
+    <mat-icon class="back-icon">arrow_back</mat-icon>
+  </button>
+  <section class="logo-section">
+    <img
+      id="logo"
+      src="assets/images/logo_reverse.png"
+      alt="logo"
+      height="30"
+      width="30"
+    />
+    Nosequever.es
+  </section>
 </mat-toolbar>
