@@ -1,0 +1,14 @@
+.movies-section {
+  color: white;
+}
+
+.page-title {
+  text-align: center;
+}
+
+.movies-card-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}

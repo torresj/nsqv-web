@@ -1,1 +1,8 @@
-<p>movies works!</p>
+<section class="movies-section">
+  <h1 class="page-title">Peliculas</h1>
+  <section class="movies-card-section">
+    <article *ngFor="let event of this.liveMovies$ | async">
+      <app-movie [movie]="event" />
+    </article>
+  </section>
+</section>
