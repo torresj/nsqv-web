@@ -1,4 +1,7 @@
-<section class="movies-section">
+<section class="loading-spinner" *ngIf="isLoading$ | async">
+  <mat-spinner color="accent"></mat-spinner>
+</section>
+<section class="movies-section" *ngIf="!(isLoading$ | async)">
   <h1 class="page-title">Peliculas</h1>
   <section class="movies-card-section">
     <article *ngFor="let event of this.liveMovies$ | async">
