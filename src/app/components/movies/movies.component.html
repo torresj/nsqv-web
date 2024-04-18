@@ -3,8 +3,19 @@
 </section>
 <section class="movies-section" *ngIf="!(isLoading$ | async)">
   <h1 class="page-title">Peliculas</h1>
+  <section class="search-input">
+    <mat-icon fontIcon="search" color="accent"></mat-icon>
+    <input
+      id="search"
+      type="search"
+      name="search"
+      autocomplete="off"
+      placeholder="Buscar por título o canal"
+      (input)="onInputChange($event)"
+    />
+  </section>
   <section class="movies-card-section">
-    <article *ngFor="let event of this.liveMovies$ | async">
+    <article *ngFor="let event of this.LiveMoviesFiltered$ | async">
       <app-movie [movie]="event" />
     </article>
   </section>

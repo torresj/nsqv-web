@@ -1,7 +1,11 @@
 <mat-card class="movie-card">
   <section class="img-section">
     <section *ngIf="movie.rate" class="rate-section">{{ getRate() }}</section>
-    <img src="{{ movie.imageUrl }}" alt="{{ movie.name }}" />
+    <img
+      *ngIf="movie.imageUrl"
+      src="{{ movie.imageUrl }}"
+      alt="{{ movie.name }}"
+    />
     <section class="title-section">{{ movie.name }}</section>
   </section>
   <section class="channel-section">
