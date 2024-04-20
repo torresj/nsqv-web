@@ -1,8 +1,8 @@
 <section class="loading-spinner" *ngIf="isLoading$ | async">
   <mat-spinner color="accent"></mat-spinner>
 </section>
-<section class="movies-section" *ngIf="!(isLoading$ | async)">
-  <h1 class="page-title">Peliculas</h1>
+<section class="series-section" *ngIf="!(isLoading$ | async)">
+  <h1 class="page-title">Series</h1>
   <section class="search-input">
     <mat-icon fontIcon="search" color="accent"></mat-icon>
     <input
@@ -14,9 +14,9 @@
       (input)="onInputChange($event)"
     />
   </section>
-  <section class="movies-card-section">
-    <article *ngFor="let event of this.liveMoviesFiltered$ | async">
-      <movie-card [movie]="event" />
+  <section class="series-card-section">
+    <article *ngFor="let event of this.liveSeriesFiltered$ | async">
+      <serie-card [serie]="event" />
     </article>
   </section>
 </section>

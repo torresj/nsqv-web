@@ -22,7 +22,7 @@ import TVEvent from '../../models/TVEvent';
 })
 export class MoviesComponent implements OnInit {
   liveMovies$ = new BehaviorSubject<TVEvent[]>([]);
-  LiveMoviesFiltered$ = new BehaviorSubject<TVEvent[]>([]);
+  liveMoviesFiltered$ = new BehaviorSubject<TVEvent[]>([]);
   isLoading$ = new BehaviorSubject(true);
 
   constructor(private movieService: MovieService) {}
@@ -30,14 +30,14 @@ export class MoviesComponent implements OnInit {
   ngOnInit(): void {
     this.movieService.getLiveMovies$().subscribe((movies) => {
       this.liveMovies$.next(movies);
-      this.LiveMoviesFiltered$.next(movies);
+      this.liveMoviesFiltered$.next(movies);
       this.isLoading$.next(false);
     });
   }
 
   onInputChange(event: Event) {
     const filter = (event.target as HTMLInputElement).value;
-    this.LiveMoviesFiltered$.next(
+    this.liveMoviesFiltered$.next(
       this.liveMovies$.value.filter(
         (movie) =>
           movie.name.toLowerCase().includes(filter.toLowerCase()) ||

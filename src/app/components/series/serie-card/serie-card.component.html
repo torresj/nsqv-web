@@ -1,0 +1,25 @@
+<mat-card class="serie-card" matRipple [routerLink]="serie.id">
+  <section class="img-section">
+    <section *ngIf="serie.rate" class="rate-section">{{ getRate() }}</section>
+    <img
+      *ngIf="serie.imageUrl"
+      src="{{ serie.imageUrl }}"
+      alt="{{ serie.name }}"
+    />
+    <section class="title-section">{{ serie.name }}</section>
+  </section>
+  <section class="channel-section">
+    <img src="{{ serie.channel.logoUrl }}" alt="{{ serie.channel.name }}" />
+    <section class="time-section">
+      {{ serie.start | date : "HH:mm" }} - {{ serie.end | date : "HH:mm" }}
+    </section>
+  </section>
+  <section class="progress-section">
+    <mat-progress-bar
+      mode="determinate"
+      value="{{ serie.progress }}"
+      color="accent"
+    ></mat-progress-bar>
+    <span>{{ serie.progress }}%</span>
+  </section>
+</mat-card>

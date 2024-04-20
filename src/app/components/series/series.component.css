@@ -1,11 +1,11 @@
-.movies-section {
+.series-section {
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.movies-card-section {
+.series-card-section {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
