@@ -1,20 +1,45 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EventService } from '../../../services/event.service';
+import { BehaviorSubject } from 'rxjs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import Event from '../../../models/TVEvent';
+import { MatCardModule } from '@angular/material/card';
+import TVEvent from '../../../models/TVEvent';
 
 @Component({
   selector: 'app-movie',
   standalone: true,
-  imports: [MatCardModule, CommonModule, MatProgressBarModule],
+  imports: [
+    CommonModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatCardModule,
+  ],
   templateUrl: './movie.component.html',
   styleUrl: './movie.component.css',
 })
-export class MovieComponent {
-  @Input() movie!: Event;
+export class MovieComponent implements OnInit {
+  event$ = new BehaviorSubject<TVEvent | undefined>(undefined);
+  isLoading$ = new BehaviorSubject(true);
 
-  getRate() {
-    return this.movie.rate ? this.movie.rate.toFixed(1) : 0;
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private eventService: EventService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params) =>
+      this.eventService.getEvent$(params['id']).subscribe({
+        next: (tvEvent) => {
+          this.event$.next(tvEvent);
+          this.isLoading$.next(false);
+        },
+        error: (error) =>
+          this.router.navigate(['/not-found'], { replaceUrl: true }),
+      })
+    );
   }
 }

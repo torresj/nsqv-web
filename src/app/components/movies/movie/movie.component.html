@@ -1,25 +1,43 @@
-<mat-card class="movie-card">
-  <section class="img-section">
-    <section *ngIf="movie.rate" class="rate-section">{{ getRate() }}</section>
-    <img
-      *ngIf="movie.imageUrl"
-      src="{{ movie.imageUrl }}"
-      alt="{{ movie.name }}"
-    />
-    <section class="title-section">{{ movie.name }}</section>
-  </section>
-  <section class="channel-section">
-    <img src="{{ movie.channel.logoUrl }}" alt="{{ movie.channel.name }}" />
+<section class="loading-spinner" *ngIf="isLoading$ | async">
+  <mat-spinner color="accent"></mat-spinner>
+</section>
+<section *ngIf="!(isLoading$ | async)">
+  <section class="event-section" *ngIf="event$ | async as event">
+    <img src="{{ event.imageUrl }}" alt="{{ event.name }}" />
+    <h1>{{ event.name }}</h1>
+    <h2>{{ event.classification }}</h2>
+    <mat-card *ngIf="event.rate" class="rate-section">
+      <a
+        href="https://www.themoviedb.org/search?language=es&query={{
+          event.name
+        }}"
+        >{{ event.rate.toFixed(1) }} en TMDB</a
+      ></mat-card
+    >
     <section class="time-section">
-      {{ movie.start | date : "HH:mm" }} - {{ movie.end | date : "HH:mm" }}
+      {{ event.start | date : "HH:mm" }} - {{ event.end | date : "HH:mm" }}
+    </section>
+    <section class="progress-section">
+      <mat-progress-bar
+        mode="determinate"
+        value="{{ event.progress }}"
+        color="accent"
+      ></mat-progress-bar>
+      <span>{{ event.progress }}%</span>
+    </section>
+    <section class="info-section">
+      <article class="info-channel info-margin">
+        Canal: {{ event.channel.name }}
+      </article>
+      <article class="info-duration info-margin">
+        Duración: {{ event.duration }} minutos
+      </article>
+      <article class="info-interpreters info-margin">
+        Intérpretes: {{ event.interpreters }}
+      </article>
+      <article class="info-synopsis info-margin">
+        Sinopsis: {{ event.synopsis }}
+      </article>
     </section>
   </section>
-  <section class="progress-section">
-    <mat-progress-bar
-      mode="determinate"
-      value="{{ movie.progress }}"
-      color="accent"
-    ></mat-progress-bar>
-    <span>{{ movie.progress }}%</span>
-  </section>
-</mat-card>
+</section>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MovieService } from '../../services/movie.service';
 import { BehaviorSubject } from 'rxjs';
-import { MovieComponent } from './movie/movie.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -15,7 +15,7 @@ import TVEvent from '../../models/TVEvent';
   styleUrl: './movies.component.css',
   imports: [
     CommonModule,
-    MovieComponent,
+    MovieCardComponent,
     MatProgressSpinnerModule,
     MatIconModule,
   ],

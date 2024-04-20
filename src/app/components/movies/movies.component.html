@@ -16,7 +16,7 @@
   </section>
   <section class="movies-card-section">
     <article *ngFor="let event of this.LiveMoviesFiltered$ | async">
-      <app-movie [movie]="event" />
+      <movie-card [movie]="event" />
     </article>
   </section>
 </section>

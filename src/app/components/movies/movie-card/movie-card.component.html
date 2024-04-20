@@ -1,0 +1,25 @@
+<mat-card class="movie-card" matRipple [routerLink]="movie.id">
+  <section class="img-section">
+    <section *ngIf="movie.rate" class="rate-section">{{ getRate() }}</section>
+    <img
+      *ngIf="movie.imageUrl"
+      src="{{ movie.imageUrl }}"
+      alt="{{ movie.name }}"
+    />
+    <section class="title-section">{{ movie.name }}</section>
+  </section>
+  <section class="channel-section">
+    <img src="{{ movie.channel.logoUrl }}" alt="{{ movie.channel.name }}" />
+    <section class="time-section">
+      {{ movie.start | date : "HH:mm" }} - {{ movie.end | date : "HH:mm" }}
+    </section>
+  </section>
+  <section class="progress-section">
+    <mat-progress-bar
+      mode="determinate"
+      value="{{ movie.progress }}"
+      color="accent"
+    ></mat-progress-bar>
+    <span>{{ movie.progress }}%</span>
+  </section>
+</mat-card>

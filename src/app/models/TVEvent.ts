@@ -2,6 +2,7 @@ import Channel from './Channel';
 import { EventType } from './EventType';
 
 export default interface TVEvent {
+  id: string;
   eventType: EventType;
   start: Date;
   end: Date;
