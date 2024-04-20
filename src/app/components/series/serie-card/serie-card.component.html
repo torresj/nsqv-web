@@ -6,7 +6,10 @@
       src="{{ serie.imageUrl }}"
       alt="{{ serie.name }}"
     />
-    <section class="title-section">{{ serie.name }}</section>
+    <section class="title-section">
+      <article>{{ serie.name }}</article>
+      <article class="chapter-section">{{ serie.chapterName }}</article>
+    </section>
   </section>
   <section class="channel-section">
     <img src="{{ serie.channel.logoUrl }}" alt="{{ serie.channel.name }}" />

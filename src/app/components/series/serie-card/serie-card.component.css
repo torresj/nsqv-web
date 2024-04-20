@@ -44,10 +44,19 @@
   bottom: 70px;
   color: white;
   background-color: rgba(0, 0, 0, 0.7);
-  text-align: center;
   width: 100%;
   padding: 10px 0px;
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.chapter-section {
+  font-size: 0.8em;
+  font-weight: normal;
+  text-align: center;
 }
 
 .channel-section {
