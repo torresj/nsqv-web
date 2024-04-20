@@ -1,0 +1,19 @@
+<mat-card class="sport-card" matRipple [routerLink]="event.id">
+  <section class="title-section">
+    <article>{{ event.name }}</article>
+  </section>
+  <section class="channel-section">
+    <img src="{{ event.channel.logoUrl }}" alt="{{ event.channel.name }}" />
+    <section class="time-section">
+      {{ event.start | date : "HH:mm" }} - {{ event.end | date : "HH:mm" }}
+    </section>
+  </section>
+  <section class="progress-section">
+    <mat-progress-bar
+      mode="determinate"
+      value="{{ event.progress }}"
+      color="accent"
+    ></mat-progress-bar>
+    <span>{{ event.progress }}%</span>
+  </section>
+</mat-card>

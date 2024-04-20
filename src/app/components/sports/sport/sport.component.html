@@ -1,0 +1,31 @@
+<section class="loading-spinner" *ngIf="isLoading$ | async">
+  <mat-spinner color="accent"></mat-spinner>
+</section>
+<section *ngIf="!(isLoading$ | async)">
+  <section class="event-section" *ngIf="event$ | async as event">
+    <h1>{{ event.name }}</h1>
+    <h2>{{ event.classification }}</h2>
+    <section class="time-section">
+      {{ event.start | date : "HH:mm" }} - {{ event.end | date : "HH:mm" }}
+    </section>
+    <section class="progress-section">
+      <mat-progress-bar
+        mode="determinate"
+        value="{{ event.progress }}"
+        color="accent"
+      ></mat-progress-bar>
+      <span>{{ event.progress }}%</span>
+    </section>
+    <section class="info-section">
+      <article class="info-channel info-margin">
+        Canal: {{ event.channel.name }}
+      </article>
+      <article class="info-duration info-margin">
+        Duración: {{ event.duration }} minutos
+      </article>
+      <article class="info-synopsis info-margin">
+        Sinopsis: {{ event.synopsis }}
+      </article>
+    </section>
+  </section>
+</section>

@@ -1,0 +1,49 @@
+.sport-card {
+  margin: 10px 5px;
+  height: 220px;
+  width: 170px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #28273c;
+  text-align: center;
+  height: 120px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.sport-card:hover {
+  cursor: pointer;
+}
+
+.channel-section {
+  color: #28273c;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 5px 0px 5px;
+}
+
+.channel-section img {
+  width: 50px;
+  height: 40px;
+}
+
+.progress-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: black;
+  padding: 0 5px;
+}
+
+.progress-section span {
+  margin-left: 5px;
+}
