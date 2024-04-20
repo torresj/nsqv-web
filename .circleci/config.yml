@@ -20,7 +20,7 @@ jobs:
       - checkout
       # Setup docker
       - setup_remote_docker:
-          version: 20.10.14
+          version: default
       # Create revision variable
       - run:
           name: Generate revision
