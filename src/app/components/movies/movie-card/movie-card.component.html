@@ -1,4 +1,4 @@
-<mat-card class="movie-card" matRipple [routerLink]="movie.id">
+<mat-card class="movie-card" matRipple [routerLink]="['/movies/', movie.id]">
   <section class="img-section">
     <section *ngIf="movie.rate" class="rate-section">{{ getRate() }}</section>
     <img

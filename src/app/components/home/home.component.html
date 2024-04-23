@@ -2,22 +2,37 @@
   <section class="banner-section">
     <span class="banner-questions">¿No sabes qué ver?</span>
     <span class="banner-text"
-      >En <strong>nosequever.es</strong> te lo ponemos fácil, no importa si son
-      canales de pago o gratuitos, anlizamos más de 20 canales en castellano y
-      ponemos toda la información a tu alcance de una forma rápida y sencilla.
-      Elige entre películas, series o eventos deportivos y decide qué quieres
-      ver.
+      >En <strong>nosequever.es</strong> te lo ponemos fácil. Te mostramos qué
+      se está emitiendo ahora mismo para que eligas entre películas, series o
+      eventos deportivos y decidas qué quieres ver.
     </span>
   </section>
   <section class="card-section">
     <article class="card movies-card" matRipple [routerLink]="'/movies'">
-      Películas
+      <section class="events-section">Películas</section>
     </article>
     <article class="card series-card" matRipple [routerLink]="'/series'">
-      Series
+      <section class="events-section">Series</section>
     </article>
     <article class="card sports-card" matRipple [routerLink]="'/sports'">
-      Deportes
+      <section class="events-section">Deportes</section>
     </article>
+  </section>
+  <section class="divider-section"><mat-divider></mat-divider></section>
+  <section class="banner-section">
+    <span class="banner-text"
+      >O si lo prefieres mira la programacion para las peliculas, series o
+      eventos deportivos por canal
+    </span>
+  </section>
+  <section class="channels-section">
+    <mat-card
+      class="channel-card"
+      *ngFor="let channel of this.channels$ | async"
+      matRipple
+      [routerLink]="['/channels/', channel.id]"
+    >
+      <img src="{{ channel.logoUrl }}" alt="{{ channel.name }}" />
+    </mat-card>
   </section>
 </section>

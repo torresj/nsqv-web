@@ -12,4 +12,10 @@ export class EventService {
   getEvent$(id: string) {
     return this.http.get<TVEvent>(apiConstants.apiBaseUrl + '/events/' + id);
   }
+
+  getTodayEventsByChannelId$(channelId: string) {
+    return this.http.get<TVEvent[]>(
+      apiConstants.apiBaseUrl + '/events/today?channelId=' + channelId
+    );
+  }
 }

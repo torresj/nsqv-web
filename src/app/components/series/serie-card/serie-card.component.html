@@ -1,4 +1,4 @@
-<mat-card class="serie-card" matRipple [routerLink]="serie.id">
+<mat-card class="serie-card" matRipple [routerLink]="['/series/', serie.id]">
   <section class="img-section">
     <section *ngIf="serie.rate" class="rate-section">{{ getRate() }}</section>
     <img

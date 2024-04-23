@@ -1,0 +1,35 @@
+<section class="loading-spinner" *ngIf="isLoading$ | async">
+  <mat-spinner color="accent"></mat-spinner>
+</section>
+<section class="events-section" *ngIf="!(isLoading$ | async)">
+  <h1 *ngIf="channel$ | async as channel" class="page-title">
+    {{ channel.name }}
+  </h1>
+  <section class="search-input">
+    <mat-icon fontIcon="search" color="accent"></mat-icon>
+    <input
+      id="search"
+      type="search"
+      name="search"
+      autocomplete="off"
+      placeholder="Buscar por nombre"
+      (input)="onInputChange($event)"
+    />
+  </section>
+  <section class="events-card-section">
+    <article *ngFor="let event of this.eventsFiltered$ | async">
+      <movie-card
+        *ngIf="event.eventType == TVEventType.MOVIE"
+        [movie]="event"
+      />
+      <serie-card
+        *ngIf="event.eventType == TVEventType.SERIE"
+        [serie]="event"
+      />
+      <sport-card
+        *ngIf="event.eventType == TVEventType.SPORT"
+        [event]="event"
+      />
+    </article>
+  </section>
+</section>
