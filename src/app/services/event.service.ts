@@ -18,4 +18,10 @@ export class EventService {
       apiConstants.apiBaseUrl + '/events/today?channelId=' + channelId
     );
   }
+
+  getTomorrowEventsByChannelId$(channelId: string) {
+    return this.http.get<TVEvent[]>(
+      apiConstants.apiBaseUrl + '/events/tomorrow?channelId=' + channelId
+    );
+  }
 }

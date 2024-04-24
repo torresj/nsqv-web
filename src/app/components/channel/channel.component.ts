@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EventService } from '../../services/event.service';
 import { BehaviorSubject } from 'rxjs';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTabsModule } from '@angular/material/tabs';
 import TVEvent from '../../models/TVEvent';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChannelService } from '../../services/channel.service';
@@ -18,6 +19,7 @@ import Channel from '../../models/Channel';
   standalone: true,
   templateUrl: './channel.component.html',
   styleUrl: './channel.component.css',
+  encapsulation: ViewEncapsulation.None,
   imports: [
     CommonModule,
     MatProgressSpinnerModule,
@@ -25,13 +27,16 @@ import Channel from '../../models/Channel';
     MovieCardComponent,
     SportCardComponent,
     SerieCardComponent,
+    MatTabsModule,
   ],
 })
 export class ChannelComponent implements OnInit {
   TVEventType = TVEventType;
   channel$ = new BehaviorSubject<Channel | undefined>(undefined);
-  events$ = new BehaviorSubject<TVEvent[]>([]);
-  eventsFiltered$ = new BehaviorSubject<TVEvent[]>([]);
+  todayEvents$ = new BehaviorSubject<TVEvent[]>([]);
+  todayEventsFiltered$ = new BehaviorSubject<TVEvent[]>([]);
+  tomorrowEvents$ = new BehaviorSubject<TVEvent[]>([]);
+  tomorrowEventsFiltered$ = new BehaviorSubject<TVEvent[]>([]);
   isLoading$ = new BehaviorSubject(true);
 
   constructor(
@@ -49,9 +54,15 @@ export class ChannelComponent implements OnInit {
           this.eventService
             .getTodayEventsByChannelId$(channel.id.toString())
             .subscribe((events) => {
-              this.events$.next(events);
-              this.eventsFiltered$.next(events);
-              this.isLoading$.next(false);
+              this.todayEvents$.next(events);
+              this.todayEventsFiltered$.next(events);
+              this.eventService
+                .getTomorrowEventsByChannelId$(channel.id.toString())
+                .subscribe((tomorrowEvents) => {
+                  this.tomorrowEvents$.next(tomorrowEvents);
+                  this.tomorrowEventsFiltered$.next(tomorrowEvents);
+                  this.isLoading$.next(false);
+                });
             });
         },
         error: (error) =>
@@ -62,8 +73,13 @@ export class ChannelComponent implements OnInit {
 
   onInputChange(event: Event) {
     const filter = (event.target as HTMLInputElement).value;
-    this.eventsFiltered$.next(
-      this.events$.value.filter((event) =>
+    this.todayEventsFiltered$.next(
+      this.todayEvents$.value.filter((event) =>
+        event.name.toLowerCase().includes(filter.toLowerCase())
+      )
+    );
+    this.tomorrowEventsFiltered$.next(
+      this.tomorrowEvents$.value.filter((event) =>
         event.name.toLowerCase().includes(filter.toLowerCase())
       )
     );

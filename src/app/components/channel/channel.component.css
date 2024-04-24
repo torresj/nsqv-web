@@ -44,3 +44,15 @@
 #search:focus {
   outline: none;
 }
+
+.mdc-tab__text-label {
+  color: white !important;
+}
+
+.mdc-tab--active span {
+  color: #ff4081 !important;
+}
+
+.mat-mdc-tab-label-container {
+  margin-bottom: 10px;
+}

@@ -16,20 +16,44 @@
       (input)="onInputChange($event)"
     />
   </section>
-  <section class="events-card-section">
-    <article *ngFor="let event of this.eventsFiltered$ | async">
-      <movie-card
-        *ngIf="event.eventType == TVEventType.MOVIE"
-        [movie]="event"
-      />
-      <serie-card
-        *ngIf="event.eventType == TVEventType.SERIE"
-        [serie]="event"
-      />
-      <sport-card
-        *ngIf="event.eventType == TVEventType.SPORT"
-        [event]="event"
-      />
-    </article>
-  </section>
+  <mat-tab-group
+    color="accent"
+    mat-stretch-tabs="false"
+    mat-align-tabs="center"
+  >
+    <mat-tab label="Hoy"
+      ><section class="events-card-section">
+        <article *ngFor="let event of this.todayEventsFiltered$ | async">
+          <movie-card
+            *ngIf="event.eventType == TVEventType.MOVIE"
+            [movie]="event"
+          />
+          <serie-card
+            *ngIf="event.eventType == TVEventType.SERIE"
+            [serie]="event"
+          />
+          <sport-card
+            *ngIf="event.eventType == TVEventType.SPORT"
+            [event]="event"
+          />
+        </article></section
+    ></mat-tab>
+    <mat-tab label="Mañana"
+      ><section class="events-card-section">
+        <article *ngFor="let event of this.tomorrowEventsFiltered$ | async">
+          <movie-card
+            *ngIf="event.eventType == TVEventType.MOVIE"
+            [movie]="event"
+          />
+          <serie-card
+            *ngIf="event.eventType == TVEventType.SERIE"
+            [serie]="event"
+          />
+          <sport-card
+            *ngIf="event.eventType == TVEventType.SPORT"
+            [event]="event"
+          />
+        </article></section
+    ></mat-tab>
+  </mat-tab-group>
 </section>
