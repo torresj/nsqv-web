@@ -27,7 +27,15 @@
     </section>
     <section class="info-section">
       <article class="info-channel info-margin">
-        Canal: {{ event.channel.name }}
+        Canal:
+        <mat-card
+          class="channel-card"
+          matRipple
+          [routerLink]="['/channels/', event.channel.id]"
+          ><img
+            src="{{ event.channel.logoUrl }}"
+            alt="{{ event.channel.name }}"
+        /></mat-card>
       </article>
       <article class="info-duration info-margin">
         Duración: {{ event.duration }} minutos

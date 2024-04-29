@@ -75,3 +75,20 @@
   color: #28273c;
   text-decoration: none;
 }
+
+.channel-card {
+  width: 50px;
+  margin-left: 10px;
+}
+
+.channel-card:hover {
+  cursor: pointer;
+}
+
+.info-channel {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}

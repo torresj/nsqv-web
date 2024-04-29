@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
+import { RouterModule } from '@angular/router';
 import TVEvent from '../../../models/TVEvent';
 
 @Component({
@@ -16,6 +17,7 @@ import TVEvent from '../../../models/TVEvent';
     MatProgressSpinnerModule,
     MatProgressBarModule,
     MatCardModule,
+    RouterModule,
   ],
   templateUrl: './sport.component.html',
   styleUrl: './sport.component.css',
