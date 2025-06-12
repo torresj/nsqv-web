@@ -80,11 +80,11 @@ jobs:
       # Install chart
       - run:
           name: Install chart
-          command: helm upgrade nsqv-web helm/nsqv-web -n tvschedule --install --kubeconfig=helm/kubeconfig
+          command: helm upgrade nsqv-web helm/nsqv-web -n nsqv --install --kubeconfig=helm/kubeconfig
       # Check deployment
       - run:
           name: Check deployment
-          command: kubectl rollout status deployment nsqv-web -n tvschedule --kubeconfig=helm/kubeconfig
+          command: kubectl rollout status deployment nsqv-web -n nsqv --kubeconfig=helm/kubeconfig
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
